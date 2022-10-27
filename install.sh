@@ -43,24 +43,24 @@ if [ $input = 1 ]; then
     # 先获取v2raya版本号
     v2raya_v=$(curl https://api.github.com/repos/v2rayA/v2rayA/releases/latest | grep tag_name | awk -F ":" '{print $2}' | head -n 2 | sed 's/\"//g;s/,//g;s/ //g;s/v//g')
 
-    echo_green "找v2raya最新到版本号为 ${v2raya_v}"
+    echo_green "找 v2raya 最新到版本 ${v2raya_v}"
 
     if [ $arch = "x86_64" ] || [ $arch = "amd64" ]; then
         v2raya_source="${proxy}/github.com/v2rayA/v2rayA/releases/download/v${v2raya_v}/v2raya_linux_x64_${v2raya_v}"
         v2raya_file=v2raya_linux_x64_${v2raya_v}
     elif [ $arch = "aarch64" ]; then
         v2raya_source="${proxy}/github.com/v2rayA/v2rayA/releases/download/v${v2raya_v}/v2raya_linux_arm64_${v2raya_v}"
-        v2raya_file=v2raya_linux_x64_${v2raya_v}
+        v2raya_file=v2raya_linux_arm64_${v2raya_v}
     fi
 
     # 判断下载的v2raya二进制文件是否存在，不存在则下载
     if [ ! -f "$v2raya_file" ]; then
-        echo -e "下载v2raya二进制文件到 $PWD/${v2raya_file}"
+        echo -e "下载 v2raya 二进制文件到 $PWD${v2raya_file}"
 
         wget $v2raya_source
     fi
 
-    mv ./${v2raya_file} /usr/local/bin/v2raya
+    mv ${v2raya_file} /usr/local/bin/v2raya
 
     # 写入启动文件
     cat >/etc/systemd/system/v2raya.service <<EOF
@@ -85,6 +85,8 @@ EOF
     curl https://api.github.com/repos/XTLS/Xray-core/releases/latest > temp
 
     xray_version=$(grep 'tag_name' temp | awk -F ',' '{print $26}' | awk -F ':' '{print $2}' | sed "s/\"//g")
+
+    echo_green "找到 xray-core 最新版本 ${xray_version}"
 
     rm -rf temp
 
