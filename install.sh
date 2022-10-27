@@ -74,8 +74,6 @@ ExecStart=/usr/local/bin/v2raya --address 0.0.0.0:2017
 WantedBy=default.target
 EOF
 
-    chmod +x /usr/local/bin/*
-
     echo_green "v2raya 已安装，准备安装 xray-core"
 
     # -------- 安装 xray-core ----------#
