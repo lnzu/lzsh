@@ -1,9 +1,0 @@
-[Unit]
-After=default.target
-
-[Service]
-ExecStart=/usr/local/bin/v2raya --address 0.0.0.0:2017
-
-[Install]
-WantedBy=default.target
-

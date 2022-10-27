@@ -61,7 +61,7 @@ if [ $input = 1 ]; then
     mv ./${v2raya_file} /usr/local/bin/v2raya
 
     # 写入启动文件
-    cat > /etc/systemd/system/v2raya.service << EOF
+    cat >/etc/systemd/system/v2raya.service <<EOF
 [Unit]
 After=default.target
 
