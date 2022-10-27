@@ -125,4 +125,5 @@ EOF
 
     rm -rf tem/ $xray_loacal_file
 
+    echo_green "v2raya xray-core 已安装完毕"
 fi
