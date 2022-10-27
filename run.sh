@@ -32,7 +32,7 @@ read -p "请输入数字：" input
 
 if [ $input = 1 ]; then
 
-    ####### 安装v2raya
+    ####### 安装v2raya #######
 
     v2raya_source=""
 
@@ -59,10 +59,22 @@ if [ $input = 1 ]; then
     fi
 
     mv ./${v2raya_file} /usr/local/bin/v2raya
-    wget https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/v2raya/v2raya.service
-    mv v2raya.service /etc/systemd/system/
+
+    # 写入启动文件
+    cat > /etc/systemd/system/v2raya.service << EOF
+[Unit]
+After=default.target
+
+[Service]
+ExecStart=/usr/local/bin/v2raya --address 0.0.0.0:2017
+
+[Install]
+WantedBy=default.target
+EOF
+
     chmod +x /usr/local/bin/*
 
-    
+    echo_green "v2raya 已安装，准备安装 xray-core"
 
+    ####### 安装 xray-core #######
 fi
