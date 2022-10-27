@@ -32,24 +32,14 @@ echo_blue "1.v2raya"
 echo -e "\n"
 
 
+read -p "请输入数字：" input
 
+if [ $input = 1 ]; then
 
-# read -p "请输入数字：" input
+    version=`curl https://api.github.com/repos/v2rayA/v2rayA/releases/latest | grep tag_name | awk -F ":" '{print $2}' | head -n 2 | sed 's/\"//g;s/,//g;s/ //g;s/v//g'`
+    v2raya_source="https://github.com/v2rayA/v2rayA/releases/download/v${version}/v2raya_linux_arm64_${version}"
 
-# if [ $input = 1 ]; then
+    echo "正在从 $v2raya_source 下载v2raya二进制文件 "
 
-    
-
-
-
-#     # version=`curl https://api.github.com/repos/v2rayA/v2rayA/releases/latest | grep tag_name | awk -F ":" '{print $2}' | head -n 2 | sed 's/\"//g;s/,//g;s/ //g;s/v//g'`
-#     # v2raya_source="https://github.com/v2rayA/v2rayA/releases/download/v${version}/v2raya_linux_arm64_${version}"
-
-#     # echo "正在从 $v2raya_source 下载v2raya二进制文件 "
-
-#     # wget $v2raya_source
-
-    
-# fi
-
-wget https://ghproxy.com/raw.githubusercontent.com/v2rayA/v2rayA/feat_v5/Dockerfile
+    wget $v2raya_source
+fi
