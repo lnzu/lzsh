@@ -84,11 +84,15 @@ EOF
 
     xray_loacal_file=""
 
+    curl https://api.github.com/repos/XTLS/Xray-core/releases/latest > temp
+
     xray_version=$(grep 'tag_name' temp | awk -F ',' '{print $26}' | awk -F ':' '{print $2}' | sed "s/\"//g")
+
+    rm -rf temp
 
     if [ "$arch" = 'x86_64' ] || [ "$arch" = 'amd64' ]; then
 
-        xray_source="${proxy}/https://github.com/XTLS/Xray-core/releases/download/${xray_version}/Xray-linux-64.zip"
+        xray_source="${proxy}/github.com/XTLS/Xray-core/releases/download/${xray_version}/Xray-linux-64.zip"
 
         xray_loacal_file="Xray-linux-64.zip"
 
