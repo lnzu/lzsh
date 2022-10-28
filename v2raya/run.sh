@@ -104,9 +104,9 @@ EOF
 elif [ "$input" = 2 ]; then
     systemctl stop v2raya.service
     systemctl disable v2raya.service
-    systemctl daemon-reload
     rm -rf /usr/local/bin/v2raya /usr/local/bin/xray /usr/local/share/xray/ /etc/systemd/system/v2raya.service
     rm -rf /etc/v2raya/
     rm -rf /run/user/0/v2raya
+    systemctl daemon-reload
     echo_green 'v2raya && xray 卸载完成'
 fi
