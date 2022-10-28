@@ -24,11 +24,17 @@ distributor=$(cat /etc/issue | awk -F " " '{print $1}')
 
 # -----------------------------------------------------------
 
+
+echo "------ v2raya ------"
+
 if [ -f "/usr/local/bin/v2raya" ] && [ -f "/usr/local/bin/xray" ]; then
+
     v2_version=$(v2raya --version)
+
     xray_version=$(xray -version | awk -F " " '{print $2}' | sed "2s/.//g")
-    echo "----- v2raya -----"
+
     echo -e "已安装 v2raya: \e[32m${v2_version}\e[0m"
+
     echo -e "已安装 xray: \e[32m${xray_version}\e[0m"
 
 else
@@ -37,6 +43,7 @@ fi
 
 echo_blue "1.升级安装"
 echo_blue "2.卸载"
+echo "--------------------"
 
 read -p "请输入数字：" input
 
@@ -68,6 +75,14 @@ if [ "$input" = 1 ]; then
     fi
 
     mv ${v2raya_file} /usr/local/bin/v2raya
+
+    systemctl disable v2raya
+
+    # 若有服务文件先停止服务
+    if [ -f "/etc/systemd/system/v2raya.service" ]; then
+        systemctl stop v2raya
+        systemctl disable v2raya
+    fi
 
     # 写入启动文件
     cat >/etc/systemd/system/v2raya.service <<EOF
@@ -132,13 +147,15 @@ EOF
 
     rm -rf tem/ $xray_loacal_file
 
-    # 生成安装的信息
-    cat >/usr/local/bin/v2-version <<EOF
-#!/bin/bash
-echo_green "目前已安装 v2raya: ${v2raya_v} xray: ${xray_version}"
-EOF
+    ## 此时已安装成功
 
-    echo_green "v2raya xray-core 已安装完毕"
+    ## 开启 v2raya 自启动
+
+    systemctl enable v2raya
+
+    systemctl start v2raya
+
+    echo_green "v2raya xray-core 安装完毕"
 
 elif [ "$input" = 2 ]; then
 
@@ -152,6 +169,6 @@ elif [ "$input" = 2 ]; then
 
     rm -rf /run/user/0/v2raya
 
-    echo_green "v2raya && xray 已卸载"
+    echo_green "v2raya && xray 卸载完成“
 
 fi
