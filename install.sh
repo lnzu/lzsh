@@ -34,7 +34,6 @@ echo_blue "1.v2raya"
 echo_blue "2.alist"
 echo_blue "3.oh-my-zsh"
 
-
 echo -e "\n"
 
 read -p "请输入数字：" input
