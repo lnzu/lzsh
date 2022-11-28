@@ -32,6 +32,8 @@ echo "* 输入对应数字进行操作"
 echo -e "---------------------------------" #
 echo_blue "1.v2raya"
 echo_blue "2.alist"
+echo_blue "2.oh-my-zsh"
+
 
 echo -e "\n"
 
@@ -44,4 +46,6 @@ if [ "$input" = 1 ]; then
     bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/v2raya/run.sh)
 elif [ "$input" = 2 ]; then
     bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/alist/run.sh)
+elif [ "$input" = 3]; then
+    bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/oh-my-zsh/run.sh)
 fi
