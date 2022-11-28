@@ -69,7 +69,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/local/alist/
-ExecStart=/usr/local/alist/alist admin && /usr/local/alist/alist server
+ExecStart=bash -c "/usr/local/alist/alist admin && /usr/local/alist/alist server"
 Restart=on-failure
 
 [Install]
