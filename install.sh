@@ -31,6 +31,7 @@ echo -e "* 注意：当前系统架构 \e[34m${arch}\e[0m 发行版 \e[34m${dist
 echo "* 输入对应数字进行操作"
 echo -e "---------------------------------" #
 echo_blue "1.v2raya"
+echo_blue "2.alist"
 
 echo -e "\n"
 
@@ -41,4 +42,6 @@ read -p "请输入数字：" input
 ##### v2raya 相关
 if [ "$input" = 1 ]; then
     bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/v2raya/run.sh)
+elif [ "$input" = 2 ]; then
+    bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/alist/run.sh)
 fi
