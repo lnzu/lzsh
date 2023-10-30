@@ -11,7 +11,7 @@ echo_blue() {
     echo -e "\e[34m$1\e[0m"
 }
 
-proxy="https://ghproxy.com"
+proxy="https://gh-proxy.com"
 # 先获取系统架构“arch”
 arch=$(uname -m)
 # 获取系统发行版
