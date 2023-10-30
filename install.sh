@@ -42,9 +42,9 @@ read -p "请输入数字：" input
 
 ##### v2raya 相关
 if [ "$input" = 1 ]; then
-    bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/v2raya/run.sh)
+    bash <(curl https://gh-proxy.com/raw.githubusercontent.com/lnzu/lzsh/main/v2raya/run.sh)
 elif [ "$input" = 2 ]; then
-    bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/alist/run.sh)
+    bash <(curl https://gh-proxy.com/raw.githubusercontent.com/lnzu/lzsh/main/alist/run.sh)
 elif [ "$input" = 3 ] ; then
-    bash <(curl https://ghproxy.com/raw.githubusercontent.com/lnzu/lzsh/main/oh-my-zsh/run.sh)
+    bash <(curl https://gh-proxy.com/raw.githubusercontent.com/lnzu/lzsh/main/oh-my-zsh/run.sh)
 fi
